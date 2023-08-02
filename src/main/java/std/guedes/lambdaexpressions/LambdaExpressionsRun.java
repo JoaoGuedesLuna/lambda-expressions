@@ -19,19 +19,26 @@ public class LambdaExpressionsRun {
         };
         system = new _System() {
             @Override
-            public void print() {
-                out.println(math.sum(23.3, 48.9));
+            public void println(double d) {
+                out.println(d);
             }
         };
-        system.print();
-        ////////////////////////////////////////////
+        system.println(math.sum(23.3, 48.9));
+        ///////////////////////////////////////////
 
 
-        //           USANDO LAMBDA               //
+        //         USANDO LAMBDA PADRÃO          //
         math = (z, y) -> z + y;
-        system = () -> out.println(math.sum(23.3, 48.9));
-        system.print();
-        ////////////////////////////////////////////
+        system = (d) -> out.println(d);
+        system.println(math.sum(23.3, 48.9));
+        ///////////////////////////////////////////
+
+
+        // USANDO LAMBDA COM REFERÊNCIA A MÉTODO //
+        math = Double::sum;
+        system = out::println;
+        system.println(math.sum(23.3, 48.9));
+        ///////////////////////////////////////////
     }
 
 }
